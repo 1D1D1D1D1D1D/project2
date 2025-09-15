@@ -1,0 +1,23 @@
+{
+  "emulators": {
+    "dataconnect": {
+      "auth": {
+        "port": 9009
+      },
+      "ui": {
+        "enabled": true,
+        "port": 4000
+      }
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true,
+    "auth": {
+      "port": 9009
+    }
+  },
+  "dataconnect": {
+    "source": "dataconnect"
+  }
+}

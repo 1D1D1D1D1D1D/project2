@@ -1,0 +1,10 @@
+module.exports = {
+    content: [
+        "./public/**/*.html", // Adjust paths to your HTML/TSX/JSX files
+        "./src/**/*.{ts,tsx,js,jsx}",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+}
