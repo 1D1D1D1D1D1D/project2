@@ -8,7 +8,7 @@ const initialState: UserSchema = {
         uid: '',
         displayName: null,
         email: null,
-        photoURL: null,
+        photoURL: '',
         phoneNumber: '',
         providerId: ''
     },
@@ -22,7 +22,15 @@ const userSlice = createSlice({
     name: 'userSlice',
     reducers: {
         setUser: (state, action: PayloadAction<UserSchema["user"]>) => {
-            state.user = action.payload;
+            if (action?.payload) {
+                state.user = {
+                    ...state.user,
+                    ...action.payload,
+                    photoURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'
+
+                };
+            }
+
             state.inited = true;
             console.log(state.user);
 

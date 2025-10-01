@@ -10,6 +10,7 @@ interface InputProps extends HtmlInputProps {
     value?: string | number;
     onChange?: (value: string) => void
     autofocus?: boolean;
+    label?: string
     readonly?: boolean
 }
 
@@ -20,6 +21,7 @@ export const Input = memo((props: InputProps) => {
     const {
         className,
         value,
+        label,
         onChange,
         placeholder,
         type = 'text',
@@ -52,6 +54,7 @@ export const Input = memo((props: InputProps) => {
                     {`${placeholder} `}
                 </div>
             )}
+
             <input
                 ref={ref}
                 type={type}

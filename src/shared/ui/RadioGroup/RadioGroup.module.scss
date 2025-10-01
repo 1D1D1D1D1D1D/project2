@@ -1,0 +1,36 @@
+.checked {
+    fill: var(--radio-checked);
+}
+
+.unchecked {
+    fill: var(--radio-unchecked);
+    width: 16px;
+}
+
+.checked,
+.unchecked {
+    width: 16px;
+    margin-right: 12px;
+
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: var(--ds-space-100, 8px) 12px;
+
+
+
+}
+
+.btnChecked {
+    box-shadow: inset 2px 0 0 0 var(--ds-text-selected, #0c66e4);
+}
+
+.btn:hover {
+    transition: 0.2s;
+    background: #4c4d50;
+    box-shadow: inset 2px 0 0 0 var(--ds-text-selected, #0c66e4);
+}

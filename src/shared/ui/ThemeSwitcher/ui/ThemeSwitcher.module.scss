@@ -1,0 +1,24 @@
+.Popover {
+    width: 100%;
+}
+
+.radioGroup {
+    position: fixed;
+    right: 310px;
+    top: 150px;
+    width: 230px;
+    bottom: auto;
+    left: auto;
+    background: var(--dropdown-color);
+    box-shadow: var(--ds-shadow-overlay, 0px 8px 12px #091e4226, 0px 0px 1px #091e424f);
+    border-radius: 8px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+
+
+
+.icon {
+    width: 16px;
+    fill: var(--ds-icon);
+}

@@ -9,9 +9,15 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         use: 'ts-loader',
         exclude: /node_modules/,
     }
+    const svgLoader = {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+    }
     const cssLoader = buildCssLoader(isDev)
     return [
         tsLoader,
-        cssLoader
+        cssLoader,
+        svgLoader
     ]
 }
