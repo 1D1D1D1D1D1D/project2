@@ -14,10 +14,19 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack'],
     }
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    }
     const cssLoader = buildCssLoader(isDev)
     return [
         tsLoader,
         cssLoader,
-        svgLoader
+        svgLoader,
+        fileLoader
     ]
 }

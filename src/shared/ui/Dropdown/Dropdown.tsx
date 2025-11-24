@@ -24,13 +24,13 @@ export function Dropdown(props: Dropdownprops) {
             <Menu.Items as='div' className={classNames(cls.menu, {}, [])}>
                 {items.map((item, index) => (
                     item.onClick ?
-                        <li className={cls.item} >
+                        <li className={cls.item} key={item.href}>
                             <button onClick={item.onClick} className={cls.btnContent}>
                                 {item.content}
                             </button>
                         </li>
                         :
-                        <li className={cls.item} >
+                        <li className={cls.item} key={item.href} >
                             <div className={cls.textContent}>
                                 {item.content}
                             </div>

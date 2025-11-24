@@ -21,7 +21,7 @@ export const Image = (props: ImageProps) => {
     } = props;
     const normalizedSrc: string | undefined = src ?? undefined;
     return (
-        <img src={normalizedSrc} className={classNames(cls.Image, {}, [className])} />
+        <img src={normalizedSrc} className={classNames(cls.Image, {}, [className])} {...otherProps} />
 
     );
 };

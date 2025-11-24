@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserSchema } from "../types/types";
-import { loginWithEmaiPassword } from "entities/User/services/loginWithEmaiPassword/loginWithEmaiPassword";
-import { registerWithEmailPassword } from "entities/User/services/registerWithEmailPassword/registerWithEmailPassword";
+
+import { loginWithEmaiPassword, loginWithGoogle, registerWithEmailPassword, UserSchema } from "entities/User";
 
 const initialState: UserSchema = {
     user: {
@@ -9,13 +8,10 @@ const initialState: UserSchema = {
         displayName: null,
         email: null,
         photoURL: '',
-        phoneNumber: '',
-        providerId: ''
+        emailVerified: false
     },
-    inited: false,
-    isLoading: false,
+    isLoading: true,
     error: null
-
 }
 
 const userSlice = createSlice({
@@ -26,16 +22,14 @@ const userSlice = createSlice({
                 state.user = {
                     ...state.user,
                     ...action.payload,
-                    photoURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'
+                    photoURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png',
 
                 };
+                state.isLoading = false
             }
-
-            state.inited = true;
-            console.log(state.user);
-
         },
         clearUser: (state) => {
+
             state.user = null;
             state.isLoading = false;
             state.error = null;
@@ -46,21 +40,36 @@ const userSlice = createSlice({
 
         builder.addCase(loginWithEmaiPassword.rejected, (state, action) => {
             state.isLoading = false
-            state.inited = true
             if (action.payload) state.error = action.payload
         })
         builder.addCase(loginWithEmaiPassword.pending, (state, action) => {
             state.isLoading = true
-            inited: false
+        })
+        builder.addCase(loginWithEmaiPassword.fulfilled, (state, action) => {
+            state.isLoading = false
         })
         builder.addCase(registerWithEmailPassword.rejected, (state, action) => {
-            inited: false
             state.isLoading = false
             if (action.payload) state.error = action.payload
         })
         builder.addCase(registerWithEmailPassword.pending, (state, action) => {
             state.isLoading = true
-            inited: false
+        })
+        builder.addCase(registerWithEmailPassword.fulfilled, (state, action) => {
+            state.isLoading = false
+        })
+        builder.addCase(loginWithGoogle.rejected, (state, action) => {
+            state.isLoading = false
+            // if (action.payload) state.error = action.payload
+        })
+        builder.addCase(loginWithGoogle.pending, (state, action) => {
+            state.isLoading = true
+        })
+        builder.addCase(loginWithGoogle.fulfilled, (state, action) => {
+            state.isLoading = false
+            // state.user = action.payload
+            // console.log(action.payload);
+
         })
 
 

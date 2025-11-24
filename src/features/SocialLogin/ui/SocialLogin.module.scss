@@ -1,0 +1,26 @@
+* {
+    color: var(--ds-text);
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgb(193, 199, 208);
+    border-radius: 3px;
+    color: var(--ds-text);
+    height: 40px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.SocialLogin {
+    width: 100%;
+    padding-top: 0px;
+    padding-right: 40px;
+    padding-bottom: 32px;
+    padding-left: 40px;
+}
+
+.label {}

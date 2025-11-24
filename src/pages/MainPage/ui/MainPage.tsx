@@ -6,7 +6,7 @@ interface MainPageProps {
 
 const MainPage = ({ className }: MainPageProps) => {
     return (
-        <div >
+        <div className='bg-red-500 h-10 w-full h-full'>
             MAIN PAGE
         </div>
     );

@@ -6,6 +6,7 @@ import { StoreProvider } from 'app/providers/StoreProvider/ui/StoreProvider';
 import ErrorBoundary from 'app/providers/ErrorBoundary/ErrorBoundary';
 import { ThemeProvider } from 'app/providers/ThemeProvider';
 import { BrowserRouter } from 'react-router-dom';
+import { QueryProvider } from 'app/providers/reactQuery/QueryProvider';
 
 const container = document.getElementById('root') as HTMLElement;
 
@@ -13,15 +14,15 @@ if (container) {
     const root = createRoot(container);
     root.render(
         <BrowserRouter>
-
-            <StoreProvider >
-                <ErrorBoundary>
-                    <ThemeProvider>
-                        <App />
-                    </ThemeProvider>
-
-                </ErrorBoundary>
-            </StoreProvider>
+            <QueryProvider>
+                <StoreProvider >
+                    <ErrorBoundary>
+                        <ThemeProvider>
+                            <App />
+                        </ThemeProvider>
+                    </ErrorBoundary>
+                </StoreProvider>
+            </QueryProvider>
         </BrowserRouter>
 
     );

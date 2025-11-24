@@ -6,7 +6,8 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                main: "var(--main-color)"
+                main: "var(--main-color)",
+                borderColorInput: "var(--ds-border-input)"
             }
         },
     },

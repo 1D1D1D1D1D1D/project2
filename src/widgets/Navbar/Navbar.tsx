@@ -18,8 +18,6 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
 
     const authData = useSelector(getUserData)
-    console.log(authData?.photoURL);
-
     return (
         <nav className={cls.navbar}>
             {authData ? (
