@@ -16,6 +16,8 @@ export const queryClient = new QueryClient({
 const PERSIST_KEY = 'react-query'
 export const persister = {
     persistClient: async (client: PersistedClient) => {
+        console.log(client);
+
         await localforage.setItem(PERSIST_KEY, client)
     },
     restoreClient: async () => {
@@ -28,23 +30,3 @@ export const persister = {
 
 
 
-
-// interface Persister {
-//     persistClient: (persistClient: PersistedClient) => Promisable<void>;
-//     restoreClient: () => Promisable<PersistedClient | undefined>;
-//     removeClient: () => Promisable<void>;
-// }
-
-// export function createIDBPersister(idbValidKey: IDBValidKey = 'reactQuery') {
-//   return {
-//     persistClient: async (client: PersistedClient) => {
-//       await set(idbValidKey, client)
-//     },
-//     restoreClient: async () => {
-//       return await get<PersistedClient>(idbValidKey)
-//     },
-//     removeClient: async () => {
-//       await del(idbValidKey)
-//     },
-//   } satisfies Persister
-// }

@@ -16,12 +16,15 @@
     --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
     --ds-shadow-overlay: 0px 0px 0px 1px #BDBDBD1F, 0px 8px 12px #0104045C, 0px 0px 1px 1px #01040480;
     --ds-text: #172b4d;
-
+    --ds-text-primary: #bfc1c4;
     --ds-font-heading-small: normal 653 1rem / 1.25rem ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
     --ds-font-body: normal 400 0.875rem / 1.25rem ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+    --ds-font-heading-large: normal 653 1.5rem / 1.75rem "Atlassian Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
     --ds-font-heading-medium: normal 653 1.25rem / 1.5rem "Atlassian Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
 
     --ds-border-input: #8590A2;
+    --ds-background-input: #242528;
+
     --ds-border-focused: #388BFF;
     --ds-background-brand-bold: #0065FF;
     --ds-background-accent-blue-hovered: #0052CC;
@@ -37,4 +40,5 @@
     --ds-radius-xlarge: 0.75rem;
 
     --ds-font-weight-medium: 500;
+    --gray-gradient: linear-gradient(to right, #243949 0%, #517fa4 100%);
 }

@@ -1,0 +1,52 @@
+.TaskCard {
+    background-color: var(--ds-surface-raised);
+    min-height: 36px;
+    border-radius: var(--ds-radius-large);
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: border .3s;
+
+    &:hover {
+        border: #fff 2px solid;
+
+        .taskDoneBtn {
+            opacity: 1;
+            width: 16px;
+        }
+
+        .text {
+            padding-left: 4px;
+        }
+    }
+}
+
+.taskDoneBtn {
+
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    width: 0;
+    height: 16px;
+    overflow: hidden;
+
+    transition:
+        width .3s ease,
+        opacity .3s ease,
+        margin-right .3s ease;
+}
+
+.icon {
+    flex-shrink: 0;
+    fill: var(--ds-text-primary);
+}
+
+.text {
+    width: 100%;
+    padding-left: 0;
+    transition: padding-left .3s ease;
+}

@@ -1,4 +1,4 @@
-import { ensureUserExists, ensureUserUpdated, getUserByUid, updateUser } from "./User/api/firestore";
+import { ensureUserExists, ensureUserUpdated, getUserByUid, updateUser } from "./User/api/userApi";
 import { useEnsureUserUpdated } from "./User/hooks/useEnsureUserUpdated";
 import { useUpdateUser } from "./User/hooks/useUpdateUser";
 import { useUser } from "./User/hooks/useUser";

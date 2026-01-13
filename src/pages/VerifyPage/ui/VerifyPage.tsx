@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { Image } from 'shared/ui/Image/Image';
 import Img from 'shared/assets/icons/letter.png'
 import Button from 'shared/ui/Button/Button';
+import { Page } from 'shared/ui/Page/Page';
 interface VerifyPageProps {
     className?: string;
 }
@@ -18,8 +19,9 @@ const VerifyPage = ({ className }: VerifyPageProps) => {
             // sendEmailVerify<User>(authData)
         }
     }, [])
+
     return (
-        <div className={classNames(cls.VerifyPage, {}, [className])}>
+        <Page className={classNames(cls.VerifyPage, {}, [className])}>
             <div className={cls.verify} >
                 <div className={cls.verifyBox}>
                     <Image src={Img} />
@@ -30,7 +32,7 @@ const VerifyPage = ({ className }: VerifyPageProps) => {
                 </div>
             </div>
 
-        </div>
+        </Page>
     );
 };
 export default VerifyPage

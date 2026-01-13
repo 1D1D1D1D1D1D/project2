@@ -1,0 +1,43 @@
+.titleWrapper {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}
+
+.nameDisplay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    padding-left: 12px;
+    padding-right: 12px;
+    align-items: center;
+    justify-content: start;
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+
+}
+
+
+.nameInput {
+    position: relative;
+    opacity: 0;
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:focus {
+        opacity: 1;
+        border: 2px, solid var(--ds-text-primary);
+        border-radius: 4px;
+        outline: none;
+        cursor: text;
+        background: var(--ds-background-input);
+        z-index: 10;
+    }
+}

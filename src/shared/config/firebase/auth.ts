@@ -64,8 +64,8 @@ export function initAuthListener(options: {
             options.onSignedOut()
         }
     });
-
 }
+
 setPersistence(auth, browserLocalPersistence).catch(error => {
     console.error('Persistence  error', error);
 })

@@ -22,7 +22,9 @@ export const SignupForm = ({ className }: SignupFormProps) => {
         'password': ''
     }
 
-    const onSubmit = handleSubmit((value) => dispatch(registerWithEmailPassword({ email: value.email, password: value.password })))
+    const onSubmit = handleSubmit((value) =>
+        dispatch(registerWithEmailPassword({ email: value.email, password: value.password }))
+    )
     return (
         <div className={classNames(cls.SignupForm, {}, [className])}>
             <Form defaultValues={values} handleSubmit={onSubmit} >

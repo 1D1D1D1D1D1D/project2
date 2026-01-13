@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getUserData } from 'entities/User';
 import { RoutePath } from 'shared/config/route/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 
 interface SignupPageProps {
     className?: string;
@@ -25,7 +26,7 @@ const SignupPage = ({ className }: SignupPageProps) => {
         }
     }, [authData, navigate]);
     return (
-        <div className={cls.page}>
+        <Page className={cls.page}>
             <div className={cls.whitebox}>
                 <div className={cls.main}>
                     <SignupForm className={cls.card} />
@@ -34,7 +35,7 @@ const SignupPage = ({ className }: SignupPageProps) => {
 
             </div>
             <DecoratedBox />
-        </div >
+        </Page >
     );
 };
 export default SignupPage

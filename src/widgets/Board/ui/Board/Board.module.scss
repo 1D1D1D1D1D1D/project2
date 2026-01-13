@@ -1,0 +1,23 @@
+.Board {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+    color: var(--ds-text-primary);
+    background: transparent;
+
+}
+
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.titleWrapper {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}

@@ -1,0 +1,10 @@
+.ColumnCard {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--accent-background);
+    width: 270px;
+    border-radius: var(--ds-radius-xlarge);
+    padding-left: 6px;
+    padding-right: 6px;
+
+}

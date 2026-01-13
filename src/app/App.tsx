@@ -1,23 +1,26 @@
 import { Suspense, useEffect, } from "react";
-import { initAuthListener, logout } from "shared/config/firebase/auth";
+import { initAuthListener } from "shared/config/firebase/auth";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { userActions } from "entities/User/model/slice/userSlice";
 import { Navbar } from "widgets/Navbar/Navbar";
 import { useTheme } from "./providers/ThemeProvider";
 import { classNames } from "shared/lib/classNames/classNames";
-import { AppRouter } from "./providers/router/ui/AppRouter";
 import { useSelector } from "react-redux";
-import { getUserData } from "entities/User";
+import { getUserData, getUserIsLoading } from "entities/User";
 import { PageLoader } from "widgets/PageLoader/PageLoader";
 import { useEnsureUserUpdated } from "features";
-import { useLocation } from "react-router-dom";
+import AppRouter from "./providers/router/ui/AppRouter";
+import { addDocAuto, createDoc } from "shared/config/firebase/firestore";
+import { Column } from "entities/Column/model/types/types";
 
 const App = () => {
     const dispatch = useAppDispatch()
     const { theme, } = useTheme()
     const authData = useSelector(getUserData)
+    const isLoading = useSelector(getUserIsLoading)
     const { ensureUpdated } = useEnsureUserUpdated(authData?.uid ?? null)
-
+    // UID ИЗ REDUX САМОЕ ГЛАВНОЕ ОСТАЛЬНЫЕ ID НЕТ СМЫСЛА ХРАНИТЬ ВНУТРИ {} 
+    //ПО ЦЕПОЧКЕ USESELECTOR(GETUSERDATA ) НАЧИНАЮ ДЕРГАТЬ ДАННЫЕ ХУКАМИ , ВСЕ ЗАВЯЗАННО НА ОДНОМ UID НЕ ПИСАТЬ ВНУТРИ ДАННЫХ ID 
     console.log(authData);
 
     useEffect(() => {
@@ -26,7 +29,7 @@ const App = () => {
             onSignedOut: () => dispatch(userActions.clearUser()),
             onVerified: (authData) => ensureUpdated(authData)
         })
-    }, [dispatch])
+    }, [])
     return (
 
         <div className={classNames('app', {}, [theme])}>
@@ -34,7 +37,9 @@ const App = () => {
                 <>
                     {/* {authData?.uid && authData.emailVerified ? <Navbar /> : null} */}
                     <Navbar />
-                    <AppRouter />
+
+                    {isLoading ? <PageLoader /> : <AppRouter />}
+                    {/* <AppRouter /> */}
                 </>
             </Suspense>
         </div>

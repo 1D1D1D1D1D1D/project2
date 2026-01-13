@@ -6,6 +6,8 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { SignupPage } from 'pages/SignupPage';
 import { VerifyPage } from 'pages/VerifyPage';
 import { EmailVerifyPage } from 'pages/EmailVerifyPage/ui/EmailVerifyPage';
+import { ProfilePage } from 'pages/ProfilePage/ProfilePage';
+import { BoardPage } from 'pages/BoardPage';
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
     element?: ReactNode;
@@ -19,8 +21,9 @@ export enum AppRoutes {
     SIGNUP = 'signup',
     VERIFY = 'verify',
     VERIFY_EMAIL = 'verifyEmail',
+    BOARD = 'board',
     NOT_FOUND = 'not_found'
-    // BOARD = 'board'
+
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
@@ -30,6 +33,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.SIGNUP]: '/signup',
     [AppRoutes.VERIFY]: '/verify',
     [AppRoutes.VERIFY_EMAIL]: '/verifyEmail',
+    [AppRoutes.BOARD]: '/board/',
     [AppRoutes.NOT_FOUND]: '*'
 
 }
@@ -38,12 +42,11 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         path: RoutePath[AppRoutes.MAIN],
         element: <MainPage />,
         authOnly: true,
-        emailVerifiedOnly: true
     },
     [AppRoutes.PROFILE]: {
         path: RoutePath[AppRoutes.PROFILE],
         authOnly: true,
-        emailVerifiedOnly: true
+        element: <ProfilePage />
     },
     [AppRoutes.LOGIN]: {
         path: RoutePath[AppRoutes.LOGIN],
@@ -58,15 +61,20 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.VERIFY]: {
         path: RoutePath[AppRoutes.VERIFY],
         authOnly: true,
-        emailVerifiedOnly: false,
-        element: <VerifyPage />
+        element: <VerifyPage />,
+
     },
 
     [AppRoutes.VERIFY_EMAIL]: {
         path: RoutePath[AppRoutes.VERIFY_EMAIL],
-        authOnly: false,
-        emailVerifiedOnly: false,
-        element: <EmailVerifyPage />
+        authOnly: true,
+        element: <EmailVerifyPage />,
+
+    },
+    [AppRoutes.BOARD]: {
+        path: `${RoutePath[AppRoutes.BOARD]}:boardId`,
+        authOnly: true,
+        element: <BoardPage />
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath[AppRoutes.NOT_FOUND],

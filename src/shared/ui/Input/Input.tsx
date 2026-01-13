@@ -2,6 +2,7 @@ import React, {
     ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
 import cls from './Input.module.scss';
+import { classNames } from 'shared/lib/classNames/classNames';
 
 type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
@@ -35,7 +36,7 @@ export const Input = memo((props: InputProps) => {
     };
 
     const onBlur = () => {
-        setIsFocused(false);
+        setIsFocused(true);
     };
     const onFocus = () => {
         setIsFocused(true);
@@ -60,7 +61,7 @@ export const Input = memo((props: InputProps) => {
                 type={type}
                 value={value}
                 onChange={onChangeHandler}
-                className={cls.input}
+                className={classNames(cls.input, {}, [className])}
                 onFocus={onFocus}
                 onBlur={onBlur}
                 readOnly={readonly}

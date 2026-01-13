@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { getUserByUid } from "../api/firestore"
+import { getUserByUid } from "../api/userApi"
 
 export const useUser = (uid: string) => {
     return useQuery({

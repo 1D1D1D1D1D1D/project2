@@ -10,9 +10,6 @@ interface FormProps<T extends FieldValues> {
 
 export const Form = <T extends FieldValues>(props: FormProps<T>) => {
     const { children, defaultValues, handleSubmit } = props;
-
-    console.log(defaultValues);
-
     return (
         <form onSubmit={handleSubmit}>
             {children}

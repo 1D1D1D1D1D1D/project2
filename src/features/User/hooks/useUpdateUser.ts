@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { ensureUserUpdated, updateUser } from "../api/firestore"
+import { ensureUserUpdated, updateUser } from "../api/userApi"
 import { mapUserToDb, UserDb } from "entities/User"
 import { data } from "react-router-dom"
 

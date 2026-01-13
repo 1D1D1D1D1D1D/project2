@@ -1,0 +1,22 @@
+.ImageUploader {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+.input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.fileUpload {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.uploadButton {
+    width: 100%;
+}

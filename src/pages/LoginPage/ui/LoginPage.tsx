@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserData } from 'entities/User';
+import { Page } from 'shared/ui/Page/Page';
 
 interface LoginPageProps {
     className?: string;
@@ -35,14 +36,14 @@ const LoginPage = ({ className }: LoginPageProps) => {
     }
 
     return (
-        <div className={classNames(cls.LoginPage, {}, [className])}>
+        <Page className={classNames(cls.LoginPage, {}, [className])}>
             LOGIN PAGE
             <Input value={valueInput} onChange={onChangeInput} placeholder="email" />
             <Input value={valueInputPw} onChange={onChangeInputPw} placeholder="password" />
             <Button onClick={() => reg(valueInput, valueInputPw)}>reg</Button>
             <Button onClick={() => login(valueInput, valueInputPw)}>login</Button>
             <Button onClick={logout}>logout</Button>a
-        </div>
+        </Page>
     );
 };
 

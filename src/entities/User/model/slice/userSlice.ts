@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { loginWithEmaiPassword, loginWithGoogle, registerWithEmailPassword, UserSchema } from "entities/User";
+import { loginWithEmaiPassword, loginWithGoogle, registerWithEmailPassword, userApi, UserSchema } from "entities/User";
 
 const initialState: UserSchema = {
     user: {
@@ -70,6 +70,20 @@ const userSlice = createSlice({
             // state.user = action.payload
             // console.log(action.payload);
 
+        }),
+            builder.addMatcher(userApi.endpoints.updateUser.matchPending, (state, action) => {
+                state.isLoading = true
+            })
+        builder.addMatcher(userApi.endpoints.updateUser.matchFulfilled, (state, action) => {
+            state.isLoading = false
+            state.user = {
+                ...state.user,
+                ...action.payload
+            }
+        })
+        builder.addMatcher(userApi.endpoints.updateUser.matchRejected, (state, action) => {
+            state.isLoading = false,
+                state.error = action.error.message ?? 'unknown error'
         })
 
 

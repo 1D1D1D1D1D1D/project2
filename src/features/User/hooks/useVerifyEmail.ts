@@ -1,21 +1,18 @@
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-import { handleAuthAction, handleCheckActionCode } from "shared/config/firebase/auth";
-import { RoutePath } from "shared/config/route/routeConfig";
+import { auth, handleAuthAction, handleCheckActionCode } from "shared/config/firebase/auth";
+import { queryClient } from "shared/lib/queryClientPersister/queryClientPersister";
 
 
 
 export const useVerifyEmail = () => {
-    const navigate = useNavigate()
     return useMutation({
         mutationFn: async (code: string) => {
-            const info = await handleCheckActionCode(code)
+
+            await handleCheckActionCode(code)
+            'start handleAuthAction'
             return handleAuthAction("verifyEmail", code)
+
         },
-        onSuccess: () => navigate(RoutePath.main),
-        // onError: () => {
-        //     return 'Code is expired or invalid'
-        // }
     })
 }
 

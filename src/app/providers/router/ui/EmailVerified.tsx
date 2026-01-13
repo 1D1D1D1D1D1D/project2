@@ -11,17 +11,26 @@ interface EmailVerifiedProps {
 export const EmailVerified = ({ children }: EmailVerifiedProps) => {
     const authData = useSelector(getUserData);
     const location = useLocation();
-    const isVerifyPage = location.pathname === RoutePath.verify;
-    const isVerifyEmailPage = location.pathname === RoutePath.verifyEmail;
 
-    // Эти две страницы НЕ должны требовать подтверждённого email
-    if (isVerifyPage || isVerifyEmailPage) {
-        return children;
-    }
+    const isVerifyPage = location.pathname === RoutePath.verify || location.pathname.startsWith(RoutePath.verify + '/');
+    const isVerifyEmailPage = location.pathname === RoutePath.verifyEmail || location.pathname.startsWith(RoutePath.verifyEmail);
 
-    if (!authData?.emailVerified) {
-        return <Navigate to={RoutePath.verify} replace />;
-    }
+    const searchParams = new URLSearchParams(location.search);
+    const hasOobCode = searchParams.has('oobCode');
+    // console.log(location.pathname, RoutePath.verifyEmail);
+    // if (!authData) {
+    //     return <Navigate to={RoutePath.signup} replace />
+    // }
+    // if (hasOobCode && isVerifyEmailPage && location.pathname === RoutePath.verifyEmail) {
+    //     console.log('1');
+    //     console.log(authData?.emailVerified === false && !hasOobCode && !isVerifyEmailPage);
+
+    // }
+
+    // if (authData?.emailVerified === false && !hasOobCode && !isVerifyEmailPage) {
+    //     console.log('2');
+    //     return <Navigate to={RoutePath.verify} replace />;
+    // }
 
     return children;
 };

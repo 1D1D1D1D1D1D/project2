@@ -15,6 +15,7 @@ export interface UserSchema {
   error: string | null
 }
 
+
 export type UserDb = Pick<User, 'uid' | 'displayName' | 'email' | 'photoURL' | 'emailVerified'>
 
 export const userFields: (keyof User)[] = ["uid", "displayName", "email", "photoURL", "emailVerified"]
